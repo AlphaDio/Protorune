@@ -4,6 +4,8 @@ public class RuneCharacter {
 	
 	Situation current_situation;
 	
+	CastManager castManager;
+	
 	String name;
 	
 	RunePower power1;
@@ -12,6 +14,10 @@ public class RuneCharacter {
 	
 	Integer current_hp = 100;
 	Integer max_hp = 100;
+	
+	public RuneCharacter() {
+		this.castManager = new CastManager(this);
+	}
 	
 	public void attach_to_situation(Situation situation) {
 		this.setCurrent_situation(situation);
@@ -37,6 +43,14 @@ public class RuneCharacter {
 
 	public void setCurrent_situation(Situation current_situation) {
 		this.current_situation = current_situation;
+	}
+
+	public RunePower getPowerFromInt(int i) {
+		if (i == 1) {
+			return this.power1;
+		}
+		
+		return null;
 	}
 
 }
