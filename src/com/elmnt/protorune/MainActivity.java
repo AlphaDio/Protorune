@@ -2,6 +2,7 @@ package com.elmnt.protorune;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +17,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		Log.v("PROTORUNE", "Starting App!");
 		
 		// Create a Default Character, normally should come from the session.
 		this.player_character = new DefaultCharacter();
@@ -33,10 +36,12 @@ public class MainActivity extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
-					// TODO Auto-generated method stub
-					MainActivity.this.current_situation.cast(MainActivity.this.player_character.power1);
+					Log.v("PROTORUNE", "First Button Clicked!");
+					MainActivity.this.current_situation.playerCast(1);
 				}
 		});
+		
+		Log.v("PROTORUNE", "1st Power Button Set!");
 	}
 
 	@Override

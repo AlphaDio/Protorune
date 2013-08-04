@@ -2,7 +2,7 @@ package com.elmnt.protorune;
 
 public class RuneCharacter {
 	
-	private Situation current_situation;
+	Situation current_situation;
 	
 	String name;
 	
@@ -18,13 +18,13 @@ public class RuneCharacter {
 	}
 	
 	public void dealsDamage(RuneCharacter target, int i) {
-		this.current_hp -= i;
+		target.current_hp -= i;
 		
-		if (this.current_hp < 0) {
-			this.current_hp = 0;
+		if (target.current_hp < 0) {
+			target.current_hp = 0;
 		}
-		if (this.current_hp > this.max_hp) {
-			this.current_hp = this.max_hp;
+		if (target.current_hp > target.max_hp) {
+			target.current_hp = target.max_hp;
 		}
 		
 		// Tell

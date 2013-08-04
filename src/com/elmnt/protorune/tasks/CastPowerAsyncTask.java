@@ -29,10 +29,12 @@ public class CastPowerAsyncTask extends AsyncTask<Void, Void, Object> {
 		while (overall > 0) {
 			timer++;
 			
-			if (timer > 60) {
-				overall++;
+			if (timer > 100) {
+				overall--;
 				timer = 0;
+				Log.v("PROTO", "Overall Reduced!");
 			}
+			
 		}
 		
 		this.power.execute(caster_character.getCurrent_situation(), caster_character, target_character);

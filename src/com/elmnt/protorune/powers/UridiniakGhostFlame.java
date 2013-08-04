@@ -6,7 +6,11 @@ import com.elmnt.protorune.Situation;
 
 public class UridiniakGhostFlame extends RunePower {
 
-	Integer cast_time = 5;
+	private Integer cast_time = 5000;
+	
+	public String getName() {
+		return "Uridiniak's Ghost Flame";
+	}
 	
 	@Override
 	public void execute(Situation current_situation, RuneCharacter caster,

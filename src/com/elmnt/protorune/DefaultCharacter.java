@@ -6,6 +6,8 @@ public class DefaultCharacter extends RuneCharacter {
 
 	String name = "Dante";
 	
-	RunePower power_1 = new UridiniakGhostFlame();
+	public DefaultCharacter() {
+		this.power1 = new UridiniakGhostFlame();
+	}
 	
 }
