@@ -2,7 +2,7 @@ package com.elmnt.protorune;
 
 public abstract class AbstractCast implements RuneCast {
 	
-	protected CastManager parent;
+	protected CastSlot parent;
 	protected RunePower castedPower;
 	protected int state;
 	protected RuneCharacter caster;

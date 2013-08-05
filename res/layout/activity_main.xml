@@ -69,24 +69,6 @@
         android:layout_marginTop="15dp"
         android:text="Button" />
 
-    <Button
-        android:id="@+id/power_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/power_2"
-        android:layout_alignBottom="@+id/power_2"
-        android:layout_alignRight="@+id/enemy_hp"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/power_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/power_1"
-        android:layout_alignBottom="@+id/power_1"
-        android:layout_toRightOf="@+id/power_1"
-        android:text="Button" />
-
     <TextView
         android:id="@+id/output_log"
         android:layout_width="wrap_content"
@@ -101,5 +83,22 @@
         android:minLines="5" >
 
     </TextView>
+
+    <Button
+        android:id="@+id/power_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/output_log"
+        android:layout_alignRight="@+id/output_log"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/power_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/power_1"
+        android:layout_alignBottom="@+id/power_1"
+        android:layout_toRightOf="@+id/power_1"
+        android:text="Button" />
 
 </RelativeLayout>

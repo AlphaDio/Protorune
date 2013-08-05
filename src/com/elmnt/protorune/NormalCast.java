@@ -1,6 +1,5 @@
 package com.elmnt.protorune;
 
-import com.elmnt.protorune.tasks.CastPowerAsyncTask;
 
 public class NormalCast extends AbstractCast implements RuneCast {
 
@@ -11,20 +10,30 @@ public class NormalCast extends AbstractCast implements RuneCast {
 	}
 
 	@Override
-	public CastManager getParent() {
-		return this.parent;
-	}
-
-	@Override
 	public void activate() {
 		if (this.state == RuneCast.STATE_UNCASTED) {
-			new CastPowerAsyncTask( this, this.castedPower, this.caster, this.target).execute();
+			
 		}
 	}
 
 	@Override
 	public RunePower getPower() {
 		return this.castedPower;
+	}
+
+	@Override
+	public RuneCharacter getCaster() {
+		return this.caster;
+	}
+
+	@Override
+	public RuneCharacter getTarget() {
+		return this.target;
+	}
+
+	@Override
+	public CastSlot getRunner() {
+		return this.parent;
 	}
 
 }

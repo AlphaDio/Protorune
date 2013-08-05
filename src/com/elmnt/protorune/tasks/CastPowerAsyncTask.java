@@ -3,29 +3,23 @@ package com.elmnt.protorune.tasks;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.elmnt.protorune.CastRunner;
 import com.elmnt.protorune.RuneCast;
-import com.elmnt.protorune.RuneCharacter;
-import com.elmnt.protorune.RunePower;
 
 public class CastPowerAsyncTask extends AsyncTask<Void, Void, Object> {
 
 	private RuneCast cast;
-	private RunePower power;
-	private RuneCharacter caster_character;
-	private RuneCharacter target_character;
 
-	public CastPowerAsyncTask(RuneCast normalCast, RunePower power, RuneCharacter player_character,
-			RuneCharacter enemy_character) {
-		this.cast = normalCast;
-		this.caster_character = player_character;
-		this.target_character = enemy_character;
-		this.power = power;
+	public CastPowerAsyncTask(RuneCast cast) {
+		this.cast = cast;
 	}
 
 	@Override
 	protected Object doInBackground(Void... arg0) {
 		int timer = 0;
-		int overall = power.getCast_time();
+		int overall = this.cast.getPower().getCast_time();
+		
+		this.cast.getRunner().castStarted();
 		
 		Log.v("PROTO", "CASTING!");
 		
@@ -40,17 +34,19 @@ public class CastPowerAsyncTask extends AsyncTask<Void, Void, Object> {
 			
 		}
 		
-		if (this.caster_character != null && this.target_character != null) {
-			this.power.execute(caster_character.getCurrent_situation(), caster_character, target_character);
+		if (this.cast.getCaster() != null && this.cast.getTarget() != null) {
+			this.cast.getPower().execute(this.cast.getCaster().getCurrent_situation(), this.cast.getCaster(), this.cast.getTarget());
 		} else {
 			Log.e("PROTO", "Could not cast as player or enemy were absent!");
-			if (this.caster_character == null) {
-				Log.e("PROTO", "Player Character is null!");
+			if (this.cast.getCaster() == null) {
+				Log.e("PROTO", "Caster Character is null!");
 			} else {
-				Log.e("PROTO", "Enemy Character is null!");
+				Log.e("PROTO", "Target Character is null!");
 			}
 			
 		}
+		
+		this.cast.getRunner().castFinished();
 		
 		Log.v("PROTO", "CASTED!");
 		

@@ -1,19 +1,19 @@
 package com.elmnt.protorune;
 
+
 public class CastManager {
 	
 	private RuneCharacter parent;
 	
-	private RuneCast cast1;
-	private RuneCast cast2;
-	private RuneCast cast3;
+	private CastRunner firstCastSlot;
+	private CastRunner secondCastSlot;
 	
 	
 	public CastManager(RuneCharacter parent) {
 		this.parent = parent;
-		this.cast1 = null;
-		this.cast2 = null;
-		this.cast3 = null;
+		
+		this.firstCastSlot = new CastSlot(this);
+		this.secondCastSlot = new CastSlot(this);
 	}
 
 
@@ -21,26 +21,23 @@ public class CastManager {
 		// get the power
 		RunePower power = this.parent.getPowerFromInt(i);
 		
+		// Make a Cast out of it
+		RuneCast cast = CastFactory.makeCast(power, this.parent, target);
+		
 		if (power != null) {
-			RuneCast cast = new NormalCast(power, this.parent, target);
 			this.queueCast(cast);
 		}
 	}
 
 	// Check if the cast can be added to the cast manager, if not discard it
 	private void queueCast(RuneCast cast) {
-		if (this.cast1 == null) {
-			this.cast1 = cast;
+		if (firstCastSlot.isAvailable()) {
+			firstCastSlot.slotPower(cast);
 		}
-		
-		checkCasts();
-	}
-
-
-	private void checkCasts() {
-		if (this.cast1 != null) {
-			this.cast1.activate();
+		if (this.secondCastSlot.isAvailable()) {
+			this.secondCastSlot.slotPower(cast);
 		}
 	}
+
 
 }

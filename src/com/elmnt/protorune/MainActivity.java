@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 				public void onClick(View arg0) {
 					Log.v("PROTORUNE", "First Button Clicked!");
 					// For now, ideally we want the cast to be done by the character directly
-					MainActivity.this.current_situation.playerCast(1);
+					// MainActivity.this.current_situation.playerCast(1);
 					if (MainActivity.this.player_character.castManager != null) {
 						MainActivity.this.player_character.castManager.cast(1, MainActivity.this.current_situation.enemy_character);
 					}
